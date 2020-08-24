@@ -1,5 +1,4 @@
-
-# Welcome to Java Bootcamp 2019!
+# Welcome to Java Bootcamp 2020!
 
 ## Introduction
 Hi! get ready to jump from Java Core to **REST and backend things**. This bootcamp will give you some important concepts and tools in order to get ready for a job, the only precondition is that you will need some git and java core knowledge.

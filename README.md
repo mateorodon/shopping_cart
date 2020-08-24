@@ -3,7 +3,7 @@
 ## Introduction
 Hi! get ready to jump from Java Core to **REST and backend things**. This bootcamp will give you some important concepts and tools in order to get ready for a job, the only precondition is that you will need some git and java core knowledge.
 
-But what exactly I need to complete this without blow my mind?. The response is: to know how to write java classes, the common things (loops, collections, blah) and how to use git as beginner level, it means fork, branching, push, pull request and the most important thing.. want to be a backend developer!
+However, what exactly I need to complete this without a blow my mind?. The response is: to know how to write java classes, the common things (loops, collections, blah) and how to use git as beginner level, it means fork, branching, push, pull request and the most important thing.. want to be a backend developer!
 
 If you don't have the pre requisites you always can ramp it up quickly using:
 
@@ -27,7 +27,7 @@ The main objective of this bootcamp is bring people from java and programming ba
 
 But.. what a **** is an API?, don't worry, we will cover a lot of things in the middle.
 
-In order to have a sort of guide we will divide the bootcamp in 3 weeks and each one could have 1 or more topics. Our expectations is that you may spend up to 4 hours a day depends on your previous knowledge and your slack participation.
+In order to have a sort of guide we will divide the bootcamp into 3 weeks and each one could have 1 or more topics. Our expectations is that you may spend up to 4 hours a day depends on your previous knowledge and your slack participation.
 
 We will provide you some tutors in order to guide you and respond specific questions, but remember **this is a self training and your effort and communication really matters**. We will be here to answer questions and give you tips.
 
@@ -35,19 +35,10 @@ Our recommendations to be successful on this bootcamp are:
 
 >- Make a routine, that will help you to finish the bootcamp
 >- Participate on the slack channels
->- Don't be afraid to ask or more important.. to answer others
->- Test and tray all.. just reading is not enough
->- Keep positive and do your best.. remember is just 3 weeks
+>- Don't be afraid to ask or more important.. to answer others.
+>- Test and tray all.. just reading is not enough.
+>- Keep positive and do your best.. remember is just 3 weeks.
 >- If tutors give you the chance to assist to a Q&A session, assist even you have nothing pending!!!
-
-## About the Authors
-
->[Luis Sala Espiell](https://www.linkedin.com/in/luis-manuel-sala-espiell-19079330/)
-
->[Gonzalo San Martin](https://www.linkedin.com/in/gonsanmartin/)
-
->[Juan Pablo Pizarro](https://www.linkedin.com/in/juanpablopizarro/)
-
 
 ## First week: The Mission.. REST
 Grab a coffee cup and let's start!! ([pre requisites](./prerequisites.md))
@@ -112,7 +103,7 @@ As always, to do things in the correct way will save a ton of headache.. so lets
 
 In the last weeks we have seen how to develop a simple web application with some of the most commonly used technologies nowadays, but this is just the beginning. During your career path you will face many different languages/technologies that you will have to learn and to apply. 
 
-Also as technology continues to grow by leaps and bounds, the software development is scaling right along with it and new trends appear like Artificial Intelligence (AI), Blockchain Technology, etc..
+Also, as technology continues to grow by leaps and bounds, the software development is scaling right along with it and new trends appear like Artificial Intelligence (AI), Blockchain Technology, etc..
 
 So our big advice is to keep learning and keep your skills sharp!
 

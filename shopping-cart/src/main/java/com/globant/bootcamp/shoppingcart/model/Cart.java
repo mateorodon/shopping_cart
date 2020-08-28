@@ -1,37 +1,16 @@
 package com.globant.bootcamp.shoppingcart.model;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter @Setter
 public class Cart {
-
 	private Long id;
 	private String user;
 	private List<Product> products;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getUser() {
-		return user;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
-	}
-
-	public List<Product> getProducts() {
-		return products;
-	}
-
-	public void setProducts(List<Product> products) {
-		this.products = products;
-	}
 
 	public void addProduct(Product product) {
 		if (products == null) {

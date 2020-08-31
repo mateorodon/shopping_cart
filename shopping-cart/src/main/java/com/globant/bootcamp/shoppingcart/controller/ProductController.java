@@ -27,14 +27,14 @@ public class ProductController {
 
 	@PostMapping("/products")
 	public ResponseEntity<ProductDto> addProduct(@RequestBody ProductDto product) {
-		Product newProduct = products.add(Mapper.convert(product));
-		return ResponseEntity.created(null).body(Mapper.convert(newProduct));
+		Product newProduct = products.add(Mapper.INSTANCE.convert(product));
+		return ResponseEntity.created(null).body(Mapper.INSTANCE.convert(newProduct));
 	}
 
 	@GetMapping("/products/{product_id}")
 	public ProductDto getProduct(@PathVariable("product_id") long productId) {
 		Product product = products.get(productId);
-		return Mapper.convert(product);
+		return Mapper.INSTANCE.convert(product);
 	}
 
 	@DeleteMapping("/products/{product_id}")
@@ -45,7 +45,7 @@ public class ProductController {
 	@GetMapping("/products")
 	public List<ProductDto> getProducts() {
 		List<Product> all = products.getAll();
-		return all.stream().map(p -> Mapper.convert(p)).collect(Collectors.toList());
+		return all.stream().map(p -> Mapper.INSTANCE.convert(p)).collect(Collectors.toList());
 	}
 
 }

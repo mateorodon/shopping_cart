@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import com.globant.bootcamp.shoppingcart.dto.CartDto;
-import com.globant.bootcamp.shoppingcart.dto.Mapper;
+import com.globant.bootcamp.shoppingcart.dto.CartMapper;
 import com.globant.bootcamp.shoppingcart.model.Cart;
 import com.globant.bootcamp.shoppingcart.model.Product;
 import com.globant.bootcamp.shoppingcart.service.CartServiceInMem;
@@ -31,14 +31,14 @@ public class CartController {
 
 	@PostMapping("/carts")
 	public CartDto addCart(@RequestBody CartDto cart) {
-		Cart newCart = carts.addCart(Mapper.INSTANCE.convert(cart));
-		return Mapper.INSTANCE.convert(newCart);
+		Cart newCart = carts.addCart(CartMapper.INSTANCE.convert(cart));
+		return CartMapper.INSTANCE.convert(newCart);
 	}
 
 	@GetMapping("/carts/{cart_id}")
 	public CartDto getCart(@PathVariable("cart_id") long cartId) {
 		Cart cart = carts.getCart(cartId);
-		return Mapper.INSTANCE.convert(cart);
+		return CartMapper.INSTANCE.convert(cart);
 	}
 
 	@DeleteMapping("/carts/{cart_id}")
@@ -48,20 +48,20 @@ public class CartController {
 
 	@GetMapping("/carts")
 	public List<CartDto> getAllCarts() {
-		return carts.getCarts().stream().map(c -> Mapper.INSTANCE.convert(c)).collect(Collectors.toList());
+		return carts.getCarts().stream().map(c -> CartMapper.INSTANCE.convert(c)).collect(Collectors.toList());
 	}
 
 	@PutMapping("/carts/{cart_id}/products/{product_id}")
 	public CartDto addProduct(@PathVariable("cart_id") long cartId, @PathVariable("product_id") long productId) {
 		Product p = products.get(productId);
 		Cart cart = carts.addProduct(cartId, p);
-		return Mapper.INSTANCE.convert(cart);
+		return CartMapper.INSTANCE.convert(cart);
 	}
 
 	@DeleteMapping("/carts/{cart_id}/products/{product_id}")
 	public CartDto removeProduct(@PathVariable("cart_id") long cartId, @PathVariable("product_id") long productId) {
 		Product product = products.get(productId);
 		Cart cart = carts.removeProduct(cartId, product);
-		return Mapper.INSTANCE.convert(cart);
+		return CartMapper.INSTANCE.convert(cart);
 	}
 }

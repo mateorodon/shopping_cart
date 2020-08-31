@@ -3,8 +3,8 @@ package com.globant.bootcamp.shoppingcart.controller;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.globant.bootcamp.shoppingcart.dto.Mapper;
 import com.globant.bootcamp.shoppingcart.dto.ProductDto;
+import com.globant.bootcamp.shoppingcart.dto.ProductMapper;
 import com.globant.bootcamp.shoppingcart.model.Product;
 import com.globant.bootcamp.shoppingcart.service.ProductServiceInMem;
 
@@ -27,14 +27,14 @@ public class ProductController {
 
 	@PostMapping("/products")
 	public ResponseEntity<ProductDto> addProduct(@RequestBody ProductDto product) {
-		Product newProduct = products.add(Mapper.INSTANCE.convert(product));
-		return ResponseEntity.created(null).body(Mapper.INSTANCE.convert(newProduct));
+		Product newProduct = products.add(ProductMapper.INSTANCE.convert(product));
+		return ResponseEntity.created(null).body(ProductMapper.INSTANCE.convert(newProduct));
 	}
 
 	@GetMapping("/products/{product_id}")
 	public ProductDto getProduct(@PathVariable("product_id") long productId) {
 		Product product = products.get(productId);
-		return Mapper.INSTANCE.convert(product);
+		return ProductMapper.INSTANCE.convert(product);
 	}
 
 	@DeleteMapping("/products/{product_id}")
@@ -45,7 +45,7 @@ public class ProductController {
 	@GetMapping("/products")
 	public List<ProductDto> getProducts() {
 		List<Product> all = products.getAll();
-		return all.stream().map(p -> Mapper.INSTANCE.convert(p)).collect(Collectors.toList());
+		return all.stream().map(p -> ProductMapper.INSTANCE.convert(p)).collect(Collectors.toList());
 	}
 
 }

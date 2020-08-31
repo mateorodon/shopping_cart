@@ -3,7 +3,8 @@ package com.globant.bootcamp.shoppingcart.model;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 public class Product {
 	private Long id;
 	private String name;

@@ -6,7 +6,8 @@ import lombok.Setter;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter @Setter
+@Getter
+@Setter
 public class Cart {
 	private Long id;
 	private String user;

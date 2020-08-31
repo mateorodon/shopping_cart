@@ -10,7 +10,8 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter @Setter
+@Getter
+@Setter
 public class CartDto {
 	private Long id;
 	private String user;

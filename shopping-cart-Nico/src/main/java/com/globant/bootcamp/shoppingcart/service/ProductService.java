@@ -3,8 +3,6 @@ package com.globant.bootcamp.shoppingcart.service;
 import com.globant.bootcamp.shoppingcart.model.Product;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
-
 @Service
 public interface ProductService {
 
@@ -14,6 +12,5 @@ public interface ProductService {
 
     Product getProduct(int id);
 
-    Product setProduct(int id, String description, String lote, LocalDate expiresIn);
 
 }

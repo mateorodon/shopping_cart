@@ -40,6 +40,10 @@ public class Product {
         this.expiresIn = expiresIn;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setLote(String lote) {
         this.lote = lote;
     }

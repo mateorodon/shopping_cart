@@ -2,16 +2,21 @@ package com.globant.bootcamp.shoppingcart.service;
 
 import com.globant.bootcamp.shoppingcart.model.Product;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class ProductServiceMem implements ProductService{
+
     List<Product> products = new ArrayList<>();
     @Override
     public boolean addProduct(Product product) {
+        for (Product product1:this.products) {
+            if(product.getId() == product1.getId()){
+                System.out.println("El id ya existe");
+                return false;
+            }
+        }
         this.products.add(product);
         return true;
     }
@@ -23,6 +28,7 @@ public class ProductServiceMem implements ProductService{
                 return this.products.remove(product);
             }
         }
+        System.out.println("El id no existe");
         return false;
     }
 
@@ -36,10 +42,11 @@ public class ProductServiceMem implements ProductService{
         return null;
     }
 
+    @Override
     public Product setProduct(int id, String description, String lote, LocalDate expiresIn){
         for (Product product:this.products) {
             if(id == product.getId()){
-                if (description!= null){
+                if (description != null){
                     product.setDescription(description);
                 }
                 if (lote != null){

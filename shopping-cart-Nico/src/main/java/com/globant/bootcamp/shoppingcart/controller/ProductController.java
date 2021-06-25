@@ -11,7 +11,6 @@ import java.util.Optional;
 public class ProductController {
     ProductServiceMem productSearcher = new ProductServiceMem();
 
-
     //MAS ADELANTE LOS MODELOS VAN A SET Dto
     @PostMapping("/products")
     public boolean  product(@RequestBody(required = true) Product product) {
@@ -33,4 +32,8 @@ public class ProductController {
         return this.productSearcher.setProduct(id,description,lote,expiresIn);
     }
 
+    @DeleteMapping("/product/{id}")
+    public boolean deleteProduct(@PathVariable(required = true) int id){
+        return productSearcher.deleteProduct(id);
+    }
 }

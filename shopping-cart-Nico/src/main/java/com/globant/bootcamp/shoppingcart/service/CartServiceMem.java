@@ -29,7 +29,7 @@ public class CartServiceMem implements CartService{
             }
         }
         System.out.println("El id no existe");
-        return false;
+        return true;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class CartServiceMem implements CartService{
     public Cart addProduct(int id,Product product) {
         for (Cart cart1:this.carts) {
             if(id== cart1.getId()){
-                cart1.addProduct(product);
+                cart1.setProduct(product);
                 return cart1;
             }
         }

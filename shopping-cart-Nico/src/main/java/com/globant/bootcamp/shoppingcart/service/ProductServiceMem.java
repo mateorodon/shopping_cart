@@ -43,12 +43,18 @@ public class ProductServiceMem implements ProductService{
     }
 
     @Override
-    public Product setProduct(Product product){
-        for (Product product1:this.products) {
-            if(product.getId() == product1.getId()){
-                product.setDescription(product.getDescription());
-                product.setLote(product.getLote());
-                product.setExpiresIn(product.getExpiresIn());
+    public Product setProduct(int id, String description, String lote, LocalDate expiresIn){
+        for (Product product:this.products) {
+            if(id == product.getId()){
+                if (description != null){
+                    product.setDescription(description);
+                }
+                if (lote != null){
+                    product.setLote(lote);
+                }
+                if (expiresIn != null){
+                    product.setExpiresIn(expiresIn);
+                }
                 return product;
             }
         }

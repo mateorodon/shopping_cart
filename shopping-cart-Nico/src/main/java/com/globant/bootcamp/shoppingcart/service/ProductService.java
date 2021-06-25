@@ -14,6 +14,6 @@ public interface ProductService {
 
     Product getProduct(int id);
 
-    Product setProduct(int id, String description, String lote, LocalDate expiresIn);
+    Product setProduct(Product product);
 
 }

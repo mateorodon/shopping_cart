@@ -21,7 +21,7 @@ public class Cart {
         return id;
     }
 
-    public boolean setProduct(Product product){
+    public boolean addProduct(Product product){
         this.productList.add(product);
         return true;
     }

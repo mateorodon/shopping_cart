@@ -1,4 +1,4 @@
-package config;
+package com.globant.bootcamp.shoppingcart.config;
 
 import com.google.common.collect.Lists;
 import org.springframework.context.annotation.Bean;

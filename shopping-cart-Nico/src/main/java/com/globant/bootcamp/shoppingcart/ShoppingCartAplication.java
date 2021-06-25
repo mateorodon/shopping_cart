@@ -1,9 +1,11 @@
+package com.globant.bootcamp.shoppingcart;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-class ShoppingCartApplication {
+class ShoppingCartAplication {
     public static void main(String[] args) {
-        SpringApplication.run(ShoppingCartApplication.class, args);
+        SpringApplication.run(ShoppingCartAplication.class, args);
     }
 }

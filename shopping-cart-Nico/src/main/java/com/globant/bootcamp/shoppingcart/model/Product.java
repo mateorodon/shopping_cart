@@ -1,4 +1,4 @@
-package model;
+package com.globant.bootcamp.shoppingcart.model;
 
 import java.time.LocalDate;
 
@@ -30,5 +30,21 @@ public class Product {
 
     public String getLote() {
         return lote;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setExpiresIn(LocalDate expiresIn) {
+        this.expiresIn = expiresIn;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setLote(String lote) {
+        this.lote = lote;
     }
 }

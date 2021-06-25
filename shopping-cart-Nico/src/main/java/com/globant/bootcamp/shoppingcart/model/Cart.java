@@ -1,7 +1,8 @@
-package model;
+package com.globant.bootcamp.shoppingcart.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 public class Cart {
     private int id;
@@ -20,6 +21,11 @@ public class Cart {
         return id;
     }
 
+    public boolean setProduct(Product product){
+        this.productList.add(product);
+        return true;
+    }
+
     public Product getProduct(int id) {
         for (Product product : this.productList) {
             if (product.getId() == id) {
@@ -30,7 +36,8 @@ public class Cart {
     }
 
     public List<Product> getProductList() {
-        List<Product> auxProductList = new ArrayList<>(this.productList);
-        return auxProductList;
+        if (this.productList == null)
+            this.productList = new ArrayList<>();
+        return this.productList;
     }
 }

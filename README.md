@@ -1,6 +1,6 @@
 # Back-end's bootcamp
 
-a idea de este bootcamp es poder aplicar los conocimientos adquiridos a lo largo del curso mediante la simulación de un escenario real. Se provee una estructura inicial de un proyecto de back-end Spring boot con algunos módulos adicionales con clases utilitarias.
+La idea de este bootcamp es poder aplicar los conocimientos adquiridos a lo largo del curso mediante la simulación de un escenario real. Se provee una estructura inicial de un proyecto de back-end Spring boot con algunos módulos adicionales con clases utilitarias.
 Se recomienda seguir las siguientes [convenciones]() para implementar la solución.
 
 El proyecto se encuentra desarrollado bajo el framework [Spring](https://spring.io/) por lo que se recomienda leer información general a través de las [guías oficiales](https://spring.io/guides).
@@ -51,10 +51,8 @@ Buildear el proyecto por línea de comandos desde la carpeta `/back-end`:
 
 - **Eclipse**
     - Ejecutar `Run application` sobre la clase principal.
-    - Agregar `-Dspring.profiles.active=dev` en el campo **"VM Arguments"** del Run Configuration.
 - **IntelliJ**
     - Ejecutar `Run` sobre la clase principal.
-    - Agregar `-Dspring.profiles.active=dev` en el campo **"VM Options"** del Run Configuration.
 
 Tras la ejecución de todos los pasos, podrá accederse a la [página principal](http://localhost:8080/api/swagger-ui/index.html#) de Swagger para invocar la API con los endpoints definidos.
 
@@ -74,4 +72,13 @@ Configurar archivo de propiedades externalizado por línea de comandos o desde e
 
 Les aconsejamos leer este [documento](convenciones.md) de convenciones para tener en cuenta a la hora de desarrollar.
 
+
+## Persistencia
+
+Cuando se haga uso de la base de datos se debe correr la aplicación con el profile **bd**, para esto realizar los siguientes pasos:
+
+- **Eclipse**
+  - Agregar `-Dspring.profiles.active=bd` en el campo **"VM Options"** del Run Configuration.
+- **IntelliJ**
+  - Agregar `-Dspring.profiles.active=bd` en el campo **"Program Arguments"** del Run Configuration. 
     

@@ -80,5 +80,5 @@ Cuando se haga uso de la base de datos se debe correr la aplicación con el prof
 - **Eclipse**
   - Agregar `-Dspring.profiles.active=bd` en el campo **"VM Options"** del Run Configuration.
 - **IntelliJ**
-  - Agregar `-Dspring.profiles.active=bd` en el campo **"Program Arguments"** del Run Configuration. 
+  - Agregar `spring.profiles.active=bd` en el campo **"Program Arguments"** del Run Configuration. 
     

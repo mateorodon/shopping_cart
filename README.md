@@ -25,7 +25,7 @@ Realizar un fork del proyecto principal para que quede asociado a cada usuario.
 Determinar una carpeta local en la maquina donde se va a trabajar para bajar el código.
 
 
->```git clone https://git.pladema.net/sgxcapacitacion/username/backendbootstrap.git```
+>```git clone https://gitlab.lamansys.ar/bootcamps/backend-bootcamp.git```
 
 **Build**
 

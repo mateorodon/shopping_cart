@@ -19,7 +19,8 @@
 		<module>sgx-shared</module>
 		<module>sgx-backoffice</module>
 		<module>app</module>
-    </modules>
+		<module>cart</module>
+	</modules>
 	<properties>
 	</properties>
 

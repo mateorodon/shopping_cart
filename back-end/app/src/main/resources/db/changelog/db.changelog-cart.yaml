@@ -1,0 +1,130 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: mrodon
+      changes:
+        - createTable:
+            tableName: cart
+            columns:
+              - column:
+                  name: cart_id
+                  type: serial
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            tableName: cart
+            columnNames: cart_id, user_id
+
+  - changeSet:
+      id: 2
+      author: mrodon
+      changes:
+        - createTable:
+            tableName: cart_product
+            columns:
+              - column:
+                  name: product_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: cart_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: user_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: amount
+                  type: int
+                  constraints:
+                    nullable: false
+        - addPrimaryKey:
+            tableName: cart_product
+            columnNames: product_id, cart_id, user_id
+
+  - changeSet:
+      id: 3
+      author: mrodon
+      changes:
+        - createTable:
+            tableName: product
+            columns:
+              - column:
+                  name: product_id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: stock
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: price
+                  type: decimal(10,2)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 4
+      author: mrodon
+      changes:
+        - createTable:
+            tableName: user
+            columns:
+              - column:
+                  name: user_id
+                  type: serial
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: username
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 5
+      author: mrodon
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: cart_product
+            baseColumnNames: "cart_id, user_id"
+            constraintName: cart-product_cart
+            referencedTableName: cart
+            referencedColumnNames: "cart_id, user_id"
+            initiallyDeferred: false
+            deferrable: false
+
+  - changeSet:
+      id: 6
+      author: mrodon
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: cart_product
+            baseColumnNames: product_id
+            constraintName: cart-product_product
+            referencedTableName: product
+            referencedColumnNames: product_id
+            initiallyDeferred: false
+            deferrable: false
+
+  - changeSet:
+      id: 7
+      author: mrodon
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: cart
+            baseColumnNames: user_id
+            constraintName: cart_user
+            referencedTableName: "user"
+            referencedColumnNames: user_id
+            initiallyDeferred: false
+            deferrable: false

@@ -43,6 +43,17 @@
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct</artifactId>
+				<version>1.5.3.Final</version>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct-processor</artifactId>
+				<version>1.5.3.Final</version>
+			</dependency>
 
 			<!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
 			<!-- Provides everything you need to write JUnit 5 Jupiter tests. -->

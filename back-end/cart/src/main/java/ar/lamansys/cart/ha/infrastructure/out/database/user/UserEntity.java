@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Getter
 @Setter
-//@AllArgsConstructor
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
 @Table(name="user")
@@ -20,16 +20,4 @@ public class UserEntity {
     Integer user_id;
     String username;
 
-    public UserEntity(Integer id, String username){
-        user_id = id;
-        this.username = username;
-    }
-
-    public Integer getUser_id(){
-        return user_id;
-    }
-
-    public String getUsername(){
-        return username;
-    }
 }

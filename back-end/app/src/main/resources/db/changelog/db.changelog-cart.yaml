@@ -62,6 +62,11 @@ databaseChangeLog:
                   constraints:
                     primaryKey: true
               - column:
+                  name: name
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
                   name: stock
                   type: int
                   constraints:
@@ -86,7 +91,7 @@ databaseChangeLog:
                     primaryKey: true
               - column:
                   name: username
-                  type: varchar(50)
+                  type: varchar(20)
                   constraints:
                     nullable: false
 

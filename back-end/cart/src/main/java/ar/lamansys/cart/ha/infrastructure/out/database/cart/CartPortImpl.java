@@ -1,6 +1,5 @@
 package ar.lamansys.cart.ha.infrastructure.out.database.cart;
 
-import ar.lamansys.cart.ha.infrastructure.out.database.product.ProductMapperJPA;
 import ar.lamansys.cart.hb.application.cart.port.CartPort;
 import ar.lamansys.cart.hc.domain.cart.CartBO;
 import lombok.AllArgsConstructor;

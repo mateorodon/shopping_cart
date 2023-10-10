@@ -1,7 +1,6 @@
 package ar.lamansys.cart.ha.infrastructure.out.database.cart;
 
 
-import ar.lamansys.cart.ha.infrastructure.out.database.cart_product.CartProductEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

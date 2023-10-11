@@ -39,21 +39,10 @@ public class AddCartProductServiceImpl implements AddCartProductService {
         }
         ProductBO productBo = findProductService.run(product.getProduct_id());//tira excepcion si no existe
         checkStockService.run(product.getAmount(), productBo); //tira excepcion si no hay stock
-
         CartBO cart = cartPort.findByUser_id(user_id);//chequeamos si el user ya tiene cart
-
-        if (cart == null){ //se utiliza persistencia para generar el valor autoincremental de cart_id
-            //EntityManagerFactory emf = Persistence.createEntityManagerFactory("PersistenceUnit");
-            //EntityManager em = emf.createEntityManager();
-            //em.getTransaction().begin();
+        if (cart == null){
             CartBO newCart = new CartBO(user_id,user_id);
             cartPort.save(newCart);
-
-            //newCart.setUser_id(user_id);
-            //em.persist(newCart); //se genera el cart_id
-            //em.getTransaction().commit();
-            //em.close();
-            //emf.close();
             cart = newCart;
         }
         product.setCart_id(cart.getCart_id());

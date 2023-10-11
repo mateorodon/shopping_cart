@@ -6,6 +6,9 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Repository
 @AllArgsConstructor
 @Primary
@@ -16,5 +19,13 @@ public class CartProductPortImpl implements CartProductPort {
     @Override
     public CartProductBO save(CartProductBO cartProduct) {
         return CartProductMapperJPA.toCartProductBO(cartProductRepository.save(CartProductMapperJPA.toCartProductEntity(cartProduct)));
+    }
+
+    @Override
+    public List<CartProductBO> getCartProducts(Integer cart_id, Integer user_id){
+        List<CartProductEntity> entities = cartProductRepository.getCartProducts(cart_id,user_id);
+        return entities.stream()
+                .map(CartProductMapperJPA::toCartProductBO)
+                        .collect(Collectors.toList());
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Repository
@@ -27,5 +28,16 @@ public class CartProductPortImpl implements CartProductPort {
         return entities.stream()
                 .map(CartProductMapperJPA::toCartProductBO)
                         .collect(Collectors.toList());
+    }
+
+    @Override
+    public void delete(CartProductBO cartProduct) {
+        cartProductRepository.delete(CartProductMapperJPA.toCartProductEntity(cartProduct));
+    }
+
+    @Override
+    public Optional<CartProductBO> findById(Integer product_id,Integer cart_id,Integer user_id) {
+        CartProductID cartProductId = new CartProductID(product_id,cart_id,user_id);
+        return cartProductRepository.findById(cartProductId).map(CartProductMapperJPA::toCartProductBO);
     }
 }

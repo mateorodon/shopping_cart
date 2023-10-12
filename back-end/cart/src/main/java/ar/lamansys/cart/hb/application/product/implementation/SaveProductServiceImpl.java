@@ -15,7 +15,7 @@ public class SaveProductServiceImpl implements SaveProductService {
     @Override
     public ProductBO run(ProductBO product) throws NotUniqueProductException {
         if (productPort.exists(product.getProduct_id())){
-            throw new NotUniqueProductException(product.getName());
+            throw new NotUniqueProductException(product);
         }
         return productPort.save(product);
     }

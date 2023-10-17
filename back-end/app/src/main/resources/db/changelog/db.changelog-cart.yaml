@@ -9,14 +9,18 @@ databaseChangeLog:
               - column:
                   name: cart_id
                   type: serial
+                  constraints:
+                    primaryKey: true
               - column:
                   name: user_id
                   type: int
                   constraints:
                     nullable: false
-        - addPrimaryKey:
-            tableName: cart
-            columnNames: cart_id, user_id
+              - column:
+                  name: finalized
+                  type: boolean
+                  constraints:
+                    nullable: false
 
   - changeSet:
       id: 2
@@ -82,7 +86,7 @@ databaseChangeLog:
       author: mrodon
       changes:
         - createTable:
-            tableName: user
+            tableName: users
             columns:
               - column:
                   name: user_id
@@ -94,22 +98,56 @@ databaseChangeLog:
                   type: varchar(20)
                   constraints:
                     nullable: false
-
   - changeSet:
       id: 5
       author: mrodon
       changes:
+        - createTable:
+            tableName: cart_history
+            columns:
+              - column:
+                  name: cart_id
+                  type: int
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: date
+                  type: date
+                  constraints:
+                    nullable: false
+              - column:
+                  name: final_price
+                  type: decimal(10,2)
+                  constraints:
+                    nullable: false
+
+  - changeSet:
+      id: 6
+      author: mrodon
+      changes:
         - addForeignKeyConstraint:
             baseTableName: cart_product
-            baseColumnNames: "cart_id, user_id"
+            baseColumnNames: cart_id
             constraintName: cart-product_cart
             referencedTableName: cart
-            referencedColumnNames: "cart_id, user_id"
+            referencedColumnNames: cart_id
+            initiallyDeferred: false
+            deferrable: false
+  - changeSet:
+      id: 7
+      author: mrodon
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: cart_product
+            baseColumnNames: user_id
+            constraintName: cart-product_user
+            referencedTableName: users
+            referencedColumnNames: user_id
             initiallyDeferred: false
             deferrable: false
 
   - changeSet:
-      id: 6
+      id: 8
       author: mrodon
       changes:
         - addForeignKeyConstraint:
@@ -122,14 +160,27 @@ databaseChangeLog:
             deferrable: false
 
   - changeSet:
-      id: 7
+      id: 9
       author: mrodon
       changes:
         - addForeignKeyConstraint:
             baseTableName: cart
             baseColumnNames: user_id
             constraintName: cart_user
-            referencedTableName: "user"
+            referencedTableName: "users"
             referencedColumnNames: user_id
+            initiallyDeferred: false
+            deferrable: false
+
+  - changeSet:
+      id: 10
+      author: mrodon
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: cart_history
+            baseColumnNames: cart_id
+            constraintName: cart-cart_history
+            referencedTableName: cart
+            referencedColumnNames: cart_id
             initiallyDeferred: false
             deferrable: false

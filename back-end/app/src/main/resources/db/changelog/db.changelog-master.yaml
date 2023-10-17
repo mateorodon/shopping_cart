@@ -6,3 +6,5 @@ databaseChangeLog:
       file: db/changelog/db.changelog-v0_1.yaml
   - include:
       file: db/changelog/db.changelog-cart.yaml
+  - include:
+      file: db/changelog/db.changelog-inic_cart.sql

@@ -6,5 +6,5 @@ import ar.lamansys.cart.hc.domain.cart.CartBO;
 public interface FindCartProductsService {
 
 
-    CartBO run(Integer cart_id,Integer user_id) throws CartDoesNotExistException;
+    CartBO run(Integer user_id) throws CartDoesNotExistException;
 }

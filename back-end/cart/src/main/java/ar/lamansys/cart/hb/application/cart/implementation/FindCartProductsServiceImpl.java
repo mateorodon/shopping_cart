@@ -15,9 +15,11 @@ public class FindCartProductsServiceImpl implements FindCartProductsService {
     GetCartProductsService getCartProductsService;
 
     @Override
-    public CartBO run(Integer cart_id, Integer user_id) throws CartDoesNotExistException {
-        CartBO out = cartPort.findById(cart_id,user_id).orElseThrow(() -> new CartDoesNotExistException(cart_id));
-        out.setProducts(getCartProductsService.run(cart_id,user_id));
+    public CartBO run(Integer user_id) throws CartDoesNotExistException {
+        CartBO out = cartPort.findByUser_id(user_id);
+        if (out== null)
+            throw new CartDoesNotExistException(user_id);
+        out.setProducts(getCartProductsService.run(out.getCart_id(),out.getUser_id()));
         return out;
     }
 }

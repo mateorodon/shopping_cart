@@ -6,6 +6,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 @AllArgsConstructor
 @Primary
@@ -19,5 +21,10 @@ public class UserPortImpl implements UserPort {
     @Override
     public boolean exists(Integer user_id) {
         return userRepository.existsById(user_id);
+    }
+
+    @Override
+    public Optional<UserBO> findById(Integer id) {
+        return userRepository.findById(id).map(UserMapperJPA::toUserBO);
     }
 }

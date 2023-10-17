@@ -13,12 +13,10 @@ import ar.lamansys.cart.hb.application.user.interfaces.FindUserService;
 import ar.lamansys.cart.hc.domain.cart.CartBO;
 import ar.lamansys.cart.hc.domain.cart_product.CartProductBO;
 import ar.lamansys.cart.hc.domain.product.ProductBO;
+import ar.lamansys.cart.hc.domain.user.UserBO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 @Service
 @AllArgsConstructor
@@ -34,16 +32,14 @@ public class AddCartProductServiceImpl implements AddCartProductService {
     @Override
     public CartProductBO run(Integer user_id, CartProductBO product)
             throws UserDoesNotExistException, ProductDoesNotExistException, StockNotAvailableException, CartDoesNotExistException {
-        if (!findUserService.run(user_id)){
-            throw new UserDoesNotExistException(user_id);
-        }
+        UserBO userBO = findUserService.run(user_id);
         ProductBO productBo = findProductService.run(product.getProduct_id());//tira excepcion si no existe
         checkStockService.run(product.getAmount(), productBo); //tira excepcion si no hay stock
         CartBO cart = cartPort.findByUser_id(user_id);//chequeamos si el user ya tiene cart
         if (cart == null){
-            CartBO newCart = new CartBO(user_id,user_id);
+            CartBO newCart = new CartBO(user_id);
             cartPort.save(newCart);
-            cart = newCart;
+            cart = cartPort.findByUser_id(user_id);//va a existir porque recien lo creamos
         }
         product.setCart_id(cart.getCart_id());
         product.setUser_id(user_id);

@@ -18,6 +18,9 @@
         <postgresql.version>42.2.8</postgresql.version>
         <lombok.version>1.18.22</lombok.version>
         <mapstruct.version>1.4.2.Final</mapstruct.version>
+		<unit-jupiter-api.version>5.10.0</unit-jupiter-api.version>
+		<junit-jupiter-engine.version>5.10.0</junit-jupiter-engine.version>
+		<mockito-core.version>5.6.0</mockito-core.version>
 	</properties>
 	<build>
 		<pluginManagement>

@@ -8,6 +8,6 @@ import java.math.BigDecimal;
 
 public interface GetMontoTotalService {
 
-    BigDecimal run(Integer user_id) throws CartDoesNotExistException, ProductDoesNotExistException;
+    BigDecimal run(Integer cart_id,Integer user_id) throws CartDoesNotExistException, ProductDoesNotExistException;
 
 }

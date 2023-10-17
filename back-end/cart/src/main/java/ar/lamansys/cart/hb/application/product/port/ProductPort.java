@@ -11,4 +11,6 @@ public interface ProductPort {
     boolean exists(Integer id);
 
     void delete(Integer id);
+
+    void updateStock(Integer id,Integer amount);
 }

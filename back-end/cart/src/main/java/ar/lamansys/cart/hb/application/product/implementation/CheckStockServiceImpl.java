@@ -14,7 +14,7 @@ public class CheckStockServiceImpl implements CheckStockService {
     private ProductPort productPort;
     @Override
     public boolean run(Integer amount, ProductBO product) throws StockNotAvailableException {
-        if (amount < product.getStock()){
+        if (amount <= product.getStock()){
             return true;
         }
         else{

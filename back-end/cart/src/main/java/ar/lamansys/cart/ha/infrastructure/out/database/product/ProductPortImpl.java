@@ -33,4 +33,9 @@ public class ProductPortImpl implements ProductPort {
     public void delete(Integer id) {
         productRepository.deleteById(id);
     }
+
+    @Override
+    public void updateStock(Integer id,Integer amount) {
+        productRepository.updateStock(id,amount);
+    }
 }

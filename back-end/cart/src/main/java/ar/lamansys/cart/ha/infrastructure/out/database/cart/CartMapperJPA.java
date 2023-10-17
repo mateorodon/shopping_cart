@@ -4,10 +4,9 @@ import ar.lamansys.cart.hc.domain.cart.CartBO;
 
 public class CartMapperJPA {
     public static CartBO toCartBO(CartEntity cart){
-        return new CartBO(cart.getCartID().getCart_id(),cart.getCartID().getUser_id());
+        return new CartBO(cart.getCart_id(),cart.getUser_id(),cart.isFinalized());
     }
     public static CartEntity toCartEntity(CartBO cart){
-        CartID cartId = new CartID(cart.getCart_id(), cart.getUser_id());
-        return new CartEntity(cartId);
+        return new CartEntity(cart.getCart_id(),cart.getUser_id(),cart.isFinalized());
     }
 }

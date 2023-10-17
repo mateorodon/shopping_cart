@@ -1,5 +1,6 @@
 package ar.lamansys.cart.ha.infrastructure.out.database.cart;
 
+import ar.lamansys.cart.hb.application.cart.exceptions.CartDoesNotExistException;
 import ar.lamansys.cart.hb.application.cart.port.CartPort;
 import ar.lamansys.cart.hc.domain.cart.CartBO;
 import lombok.AllArgsConstructor;
@@ -22,14 +23,13 @@ public class CartPortImpl implements CartPort {
 
     @Override
     public boolean exists(Integer cart_id, Integer user_id) {
-        CartID cartId = new CartID(cart_id,user_id);
-        return cartRepository.existsById(cartId);
+        return cartRepository.existsById(cart_id);
     }
 
     @Override
     public Optional<CartBO> findById(Integer cart_id, Integer user_id) {
-        CartID cartId = new CartID(cart_id,user_id);
-        return cartRepository.findById(cartId).map(CartMapperJPA::toCartBO);
+        //CartID cartId = new CartID(cart_id,user_id);
+        return cartRepository.findById(cart_id).map(CartMapperJPA::toCartBO);
     }
 
     @Override
@@ -41,12 +41,12 @@ public class CartPortImpl implements CartPort {
         catch (Exception e){
             return null;
         }*/
-        Integer cart_id = cartRepository.getCartId(user_id);
-        if (cart_id == null){
+        CartEntity cart= cartRepository.getCartId(user_id);
+        if (cart == null){
             return null;
         }
         else {
-            return new CartBO(cart_id, user_id);
+            return CartMapperJPA.toCartBO(cart);
         }
 
     }

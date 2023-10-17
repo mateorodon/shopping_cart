@@ -1,5 +1,6 @@
 package ar.lamansys.cart.hb.application.cart.port;
 
+import ar.lamansys.cart.hb.application.cart.exceptions.CartDoesNotExistException;
 import ar.lamansys.cart.hc.domain.cart.CartBO;
 
 import java.util.Optional;

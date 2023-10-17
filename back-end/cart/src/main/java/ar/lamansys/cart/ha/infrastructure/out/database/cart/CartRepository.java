@@ -3,13 +3,14 @@ package ar.lamansys.cart.ha.infrastructure.out.database.cart;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
-public interface CartRepository extends JpaRepository<CartEntity,CartID> {
+public interface CartRepository extends JpaRepository<CartEntity,Integer> {
 
     //@Transactional(readOnly = true)
-    @Query(value = "SELECT c.cartID.cart_id " +
+    @Transactional
+    @Query(value = "SELECT c " +
                     "FROM CartEntity c " +
-                    "WHERE c.cartID.user_id = :user_id " +
-                    "GROUP BY c.cartID.cart_id ")
-    Integer getCartId(@Param("user_id") Integer user_id);
+                    "WHERE c.user_id = :user_id AND c.finalized = false ")
+    CartEntity getCartId(@Param("user_id") Integer user_id);
 }

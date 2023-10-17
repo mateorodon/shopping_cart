@@ -5,10 +5,7 @@ import ar.lamansys.cart.ha.infrastructure.in.rest.cart.dto.CartDTOResponse;
 import ar.lamansys.cart.ha.infrastructure.in.rest.cart.dto.MontoTotalCartDTOResponse;
 import ar.lamansys.cart.ha.infrastructure.in.rest.cart_product.CartProductDTORequest;
 import ar.lamansys.cart.hb.application.cart.exceptions.CartDoesNotExistException;
-import ar.lamansys.cart.hb.application.cart.interfaces.AddCartProductService;
-import ar.lamansys.cart.hb.application.cart.interfaces.FindCartProductsService;
-import ar.lamansys.cart.hb.application.cart.interfaces.GetMontoTotalService;
-import ar.lamansys.cart.hb.application.cart.interfaces.RemoveCartProductService;
+import ar.lamansys.cart.hb.application.cart.interfaces.*;
 import ar.lamansys.cart.hb.application.cart_product.exceptions.CartProductDoesNotExistException;
 import ar.lamansys.cart.hb.application.product.exceptions.ProductDoesNotExistException;
 import ar.lamansys.cart.hb.application.product.exceptions.StockNotAvailableException;
@@ -30,8 +27,8 @@ public class CartController {
     private FindCartProductsService findCartProductsService;
     private RemoveCartProductService removeCartProductService;
     private GetMontoTotalService getMontoTotalService;
-
-    @PutMapping("/{userId}")
+    private FinishBuyService finishBuyService;
+    @PostMapping("/{userId}")
     public void addProduct(@PathVariable Integer userId, @RequestBody CartProductDTORequest product)
             throws UserDoesNotExistException, ProductDoesNotExistException, StockNotAvailableException, CartDoesNotExistException {
         CartProductBO cartProductBO = new CartProductBO(product.getProduct_id(), product.getAmount());
@@ -40,7 +37,7 @@ public class CartController {
 
     @GetMapping("/{userId}")
     public CartDTOResponse getProducts(@PathVariable Integer userId) throws CartDoesNotExistException {
-        return cartAdapterRest.toCartDTOResponse(findCartProductsService.run(userId,userId));
+        return cartAdapterRest.toCartDTOResponse(findCartProductsService.run(userId));
     }
 
     @DeleteMapping("/{userId}/{productId}")
@@ -51,8 +48,13 @@ public class CartController {
 
     @GetMapping("/montoTotal/{userId}")
     public MontoTotalCartDTOResponse getMontoTotal(@PathVariable Integer userId) throws CartDoesNotExistException, ProductDoesNotExistException {
-        CartDTOResponse cart =  cartAdapterRest.toCartDTOResponse(findCartProductsService.run(userId,userId));
-        return new MontoTotalCartDTOResponse(cart,getMontoTotalService.run(userId));
+        CartDTOResponse cart =  cartAdapterRest.toCartDTOResponse(findCartProductsService.run(userId));
+        return new MontoTotalCartDTOResponse(cart,getMontoTotalService.run(userId,userId));
+    }
+
+    @PutMapping("/finish/{userId}")
+    public void finishBuy(@PathVariable Integer userId) throws ProductDoesNotExistException, CartDoesNotExistException, StockNotAvailableException {
+        finishBuyService.run(userId);
     }
 
 }

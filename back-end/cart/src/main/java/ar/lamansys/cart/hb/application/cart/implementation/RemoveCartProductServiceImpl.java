@@ -13,6 +13,7 @@ import ar.lamansys.cart.hb.application.user.interfaces.FindUserService;
 import ar.lamansys.cart.hc.domain.cart.CartBO;
 import ar.lamansys.cart.hc.domain.cart_product.CartProductBO;
 import ar.lamansys.cart.hc.domain.product.ProductBO;
+import ar.lamansys.cart.hc.domain.user.UserBO;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -29,9 +30,7 @@ public class RemoveCartProductServiceImpl implements RemoveCartProductService {
     @Override
     public void run(Integer user_id, Integer product_id)
             throws UserDoesNotExistException, ProductDoesNotExistException, CartDoesNotExistException, CartProductDoesNotExistException {
-        if (!findUserService.run(user_id)){
-            throw new UserDoesNotExistException(user_id);
-        }
+        UserBO userBO = findUserService.run(user_id);
         ProductBO productBo = findProductService.run(product_id);//tira excepcion si no existe
         CartBO cart = cartPort.findByUser_id(user_id);
         if (cart==null)
